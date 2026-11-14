@@ -1,5 +1,7 @@
 # Box & Bonus — Customer Loyalty Rewards System
 
+Submission repository: [Customer-Loyalty-Rewards-System](https://github.com/Jainam333440/Customer-Loyalty-Rewards-System)
+
 A working factory rewards application. Customers register, claim hidden product-box codes, earn points, and reserve rewards. The factory owner issues codes, manages the reward catalog, processes pickup requests, and monitors claims and suspicious activity.
 
 ## Quick start (Windows, macOS, Linux)

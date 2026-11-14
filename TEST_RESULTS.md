@@ -11,7 +11,7 @@ Executed on 14 November 2026 in the build environment.
 
 Coverage: duplicate claims across accounts; concurrent claims; expired/revoked/invalid codes; hashes-only storage; concurrent overspending; last-unit stock races; original-cost refunds and exactly-once cancellation; fulfilled-state locking; hidden rewards on creation/redemption; numeric validation; persistent rate limits; sessions/logout/expiry; password hashes and duplicate usernames; owner authorization; CSRF; registration role escalation; response privacy; login request headers; static path allowlist; cookie flags; editor reset identity; HTML escaping.
 
-The initial Python run failed the hidden-reward test (the same domain test ran twice before the test inheritance was cleaned up). After the fix and cleanup, all 20 distinct tests passed. The pre-fix UI reset handler was tested separately against commit `38ad8b5` and failed with retained ID `7`; the current regression passes. See `AI_LOG.md`.
+The initial Python run failed the hidden-reward test (the same domain test ran twice before the test inheritance was cleaned up). After the fix and cleanup, all 20 distinct tests passed. The pre-fix UI reset handler was tested separately against commit `11a894d` and failed with retained ID `7`; the current regression passes. See `AI_LOG.md`.
 
 ## Browser inspection — limited PASS
 
@@ -36,6 +36,6 @@ Full browser login/claim/redemption, CSV downloads, mobile devices and keyboard/
 | 11 | Refresh/restart server | Accounts, points and history persist |
 | 12 | Narrow browser to a phone width; use Tab navigation | Cards stack; forms remain usable; table scrolls horizontally |
 
-## Public repository verification — pending
+## Public repository verification — PASS
 
-No target repository URL was supplied in this request. Publication and anonymous accessibility verification must be completed before submission. A local preview is not a public deployment.
+Published at https://github.com/Jainam333440/Customer-Loyalty-Rewards-System on 14 November 2026. An unauthenticated HTTP request returned 200 and showed the README and tests. The uploaded source tree exactly matched the locally tested tree (Git tree SHA `84311e923a4d173afdbe572ea3e5d1c4a98eeee7`) before the documentation-only publication update. The six development stages were imported in order through GitHub, preserving their changes with new commit IDs. No public running application is deployed.

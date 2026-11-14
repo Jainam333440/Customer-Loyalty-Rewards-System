@@ -1,6 +1,8 @@
 # Public GitHub submission
 
-The assignment requires one public repository accessible without login. The target repository URL has not yet been provided, so no upload is claimed.
+The submission repository is https://github.com/Jainam333440/Customer-Loyalty-Rewards-System. It is public. The six original development stages have been imported in order with their changes preserved and new GitHub commit IDs. Anonymous access was verified with HTTP 200.
+
+The instructions below are for restoring the downloadable package into another empty repository; they are not needed for the published checkout.
 
 ## Preserve the real history
 
