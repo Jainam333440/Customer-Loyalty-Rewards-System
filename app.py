@@ -1,5 +1,5 @@
 """Local demo server. Put behind a trusted HTTPS reverse proxy for deployment."""
-import getpass, json, os, sys
+import argparse, getpass, json, os, sys
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from http.cookies import SimpleCookie
 from pathlib import Path
@@ -86,6 +86,10 @@ if __name__=='__main__':
             print('Owner and starter rewards created. Run python app.py.')
         except Error as e: print(e); sys.exit(1)
     else:
-        host=os.getenv('HOST','127.0.0.1'); port=int(os.getenv('PORT','8000'))
+        parser=argparse.ArgumentParser()
+        parser.add_argument('--host',default=os.getenv('HOST','127.0.0.1'))
+        parser.add_argument('--port',type=int,default=int(os.getenv('PORT','8000')))
+        parser.add_argument('--strictPort',action='store_true')
+        args=parser.parse_args(); host=args.host; port=args.port
         server=make_server(host,port,path)
         print(f'Box & Bonus running at http://{host}:{port}'); server.serve_forever()
