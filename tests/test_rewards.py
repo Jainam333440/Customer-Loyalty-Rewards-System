@@ -3,7 +3,7 @@ from pathlib import Path
 from core import Store, Error
 from app import make_server
 
-class RewardsTests(unittest.TestCase):
+class BaseFixture(unittest.TestCase):
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory(); self.path=str(Path(self.temp.name)/'test.sqlite3'); self.s=Store(self.path)
         self.owner=self.s.register('factory','owner-test-password','owner')
@@ -12,6 +12,8 @@ class RewardsTests(unittest.TestCase):
     def code(self,points=100): return self.s.issue(self.owner,'Batch A',points,1)['codes'][0]
     def value(self,sql,args=()):
         with self.s.db() as db: return db.execute(sql,args).fetchone()[0]
+
+class RewardsTests(BaseFixture):
     def test_claim_once_across_customers(self):
         code=self.code(); self.assertEqual(self.s.claim(self.a,code),100)
         for uid in (self.a,self.b):
@@ -86,8 +88,7 @@ class RewardsTests(unittest.TestCase):
         with self.assertRaises(Error): self.s.register('ALICE','another-password')
         with self.assertRaises(Error): self.s.login('alice','wrong-password','test')
 
-class HTTPTests(RewardsTests):
-    # Inherited domain tests also exercise setup with a real server attached.
+class HTTPTests(BaseFixture):
     def setUp(self):
         super().setUp(); self.server=make_server('127.0.0.1',0,self.path)
         self.thread=threading.Thread(target=self.server.serve_forever,daemon=True); self.thread.start()

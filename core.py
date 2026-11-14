@@ -112,7 +112,7 @@ class Store:
         with self.db() as db:
             if reward_id:
                 if not db.execute('UPDATE rewards SET name=?,cost=?,stock=?,active=? WHERE id=?',(name,cost,stock,int(bool(active)),reward_id)).rowcount: raise Error('Reward not found.')
-            else: db.execute('INSERT INTO rewards(name,cost,stock) VALUES(?,?,?)',(name,cost,stock))
+            else: db.execute('INSERT INTO rewards(name,cost,stock,active) VALUES(?,?,?,?)',(name,cost,stock,int(bool(active))))
             self.audit(db,uid,'reward_saved',name)
     def redeem(self,uid,rid):
         with self.db() as db:

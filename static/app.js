@@ -20,7 +20,7 @@ function bind(){if($('#claim-form'))$('#claim-form').onsubmit=e=>{e.preventDefau
  if($('#dismiss-export'))$('#dismiss-export').onclick=()=>{codeExport=null;render();};
  if($('#reward-form'))$('#reward-form').onsubmit=e=>{e.preventDefault();const d=Object.fromEntries(new FormData(e.target));d.cost=Number(d.cost);d.stock=Number(d.stock);d.reward_id=d.reward_id?Number(d.reward_id):null;d.active=d.active==='true';action(e.submitter,()=>api('owner/rewards',d));};
  document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>{const r=state.rewards.find(r=>r.id===Number(b.dataset.edit));const f=$('#reward-form');for(const k of ['name','cost','stock'])f.elements[k].value=r[k];f.elements.reward_id.value=r.id;f.elements.active.value=r.active?'true':'false';$('#reward-title').textContent='Edit reward #'+r.id;f.scrollIntoView({behavior:'smooth'});});
- if($('#reset-reward'))$('#reset-reward').onclick=()=>{$('#reward-title').textContent='Add a reward';};
+ if($('#reset-reward'))$('#reset-reward').onclick=()=>{$('#reward-title').textContent='Add a reward';$('#reward-form').elements.reward_id.value='';};
  document.querySelectorAll('[data-revoke]').forEach(b=>b.onclick=()=>{if(confirm('Revoke every unused code in this batch? This cannot be undone.'))action(b,()=>api('owner/revoke',{batch_id:Number(b.dataset.revoke)}));});
  document.querySelectorAll('[data-resolve]').forEach(b=>b.onclick=()=>{if(confirm(b.dataset.status==='fulfilled'?'Confirm the customer received the reward?':'Cancel this reward and refund the points?'))action(b,()=>api('owner/resolve',{redemption_id:Number(b.dataset.resolve),status:b.dataset.status}));});
 }

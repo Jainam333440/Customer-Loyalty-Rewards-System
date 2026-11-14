@@ -1,0 +1,1 @@
+{"name":"box-and-bonus","private":true,"scripts":{"dev":"HOST=0.0.0.0 python3 app.py","test:ui":"node --test tests/ui.test.cjs"}}
